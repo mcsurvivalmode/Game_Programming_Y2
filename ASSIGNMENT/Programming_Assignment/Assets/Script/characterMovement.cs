@@ -8,6 +8,7 @@ using System.Diagnostics;
 
 
 
+
 public class characterMovement : MonoBehaviour
 {
     Animator animator;
@@ -46,7 +47,19 @@ public class characterMovement : MonoBehaviour
     void Update()
     {
         handleMovement();
+        handleRotation();
     }
+
+    void handleRotation()
+    {
+        Vector3 currentPosition = transform.position; 
+        Vector3 newPosition = new Vector3(currentMovement.x, 0, currentMovement.y);
+        Vector3 positionToLookAt = currentPosition + newPosition;
+
+        transform.LookAt(positionToLookAt);
+    }
+
+
 
     void handleMovement()
     {
