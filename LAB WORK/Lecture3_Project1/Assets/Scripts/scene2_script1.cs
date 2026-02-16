@@ -1,16 +1,33 @@
 using UnityEngine;
+using System.Collections;
 
-public class scene2_script1 : MonoBehaviour
+public class Scene2_Script1 : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+	int nextIndex;
+	public GameObject[] waypoints;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public GameObject NextWaypoint (GameObject current)
+	{
+		if (current != null) 
+		{
+			// Find array index of given waypoint
+			for (int i = 0; i < waypoints.Length; i++) 
+			{
+				// Once found calculate next one
+				if (current == waypoints [i]) 
+				{
+					// Modulus operator helps to avoid to go out of bounds
+					// And resets to 0 the index count once we reach the end of the array
+					nextIndex = (i + 1) % waypoints.Length;
+				}
+			}
+		} 
+		else 
+		{
+			// Default is first index in array
+			nextIndex = 0;
+		}
+
+		return waypoints [nextIndex];
+	}
 }
