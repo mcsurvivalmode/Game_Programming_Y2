@@ -56,7 +56,7 @@ public class Scene1_Script3 : MonoBehaviour
 	void Start ()
 	{
 		// Assume first run, so state data is initialised
-		playerName = "KeithO";
+		playerName = "FAYE";
 		highScore = 0;
 		currentLevel = 1;
 		spawnPoint = "beginning";//reference to a game object
