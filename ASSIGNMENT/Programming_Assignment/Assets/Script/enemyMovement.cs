@@ -113,7 +113,7 @@ public class enemyMovement : MonoBehaviour
     void seekFunction()
     {
         destination = targetObject.position;
-        canvasUpdate[3].text = "Seeking";
+        canvasUpdate[3].text = "Enemy: Seeking";
     }
     void patrolFunction()
     {
@@ -121,12 +121,12 @@ public class enemyMovement : MonoBehaviour
         {
             destination = NextWaypoint(destination);
         }
-        canvasUpdate[3].text = "Patrolling";
+        canvasUpdate[2].text = "Enemy: Patrolling";
     }
     void IdleFunction()
     {
         destination = NextWaypoint(destination);
-        canvasUpdate[3].text = "Idling";
+        canvasUpdate[1].text = "Enemy: Idling";
     }
 
     
