@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.TextCore.Text;
+using UnityEditor.Experimental.GraphView;
 
 public class enemyMovement : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class enemyMovement : MonoBehaviour
     Vector3 worldDeltaPosition;
     Vector2 groundDeltaPosition;
     Vector2 velocity = Vector2.zero;
+
+    characterMovement stateCheck;
 
     
 
@@ -44,17 +48,30 @@ public class enemyMovement : MonoBehaviour
 
         destination = NextWaypoint(Vector3.zero);
         col = GetComponent<SphereCollider>();
+
+        stateCheck = FindAnyObjectByType<characterMovement>();
     }
 
     
     void Update() //decision tree 
     {
 
+             //this will be a state for if the player reaches home, the enemy cannot look for them anymore
+        if (stateCheck == true) 
+        {
+            patrolFunction();
+            canvasUpdate[2].text = "Player is home and safe ";
+
+        }
+
         if (targetObject)
         {
             isPlayerVisible();
             isPlayerAudible();
             isPlayerClose();
+
+
+
 
             if (isVisible && isClose)
             {
@@ -71,7 +88,7 @@ public class enemyMovement : MonoBehaviour
             else if (!isVisible && isAudible)
             {
                 patrolFunction();
-            }
+            } 
         }
         else
         {
