@@ -34,6 +34,7 @@ public class characterMovement : MonoBehaviour
 
 
         input.characterController.Run.performed += ctx => runPressed = ctx.ReadValueAsButton();
+        
     }
 
 

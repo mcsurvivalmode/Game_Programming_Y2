@@ -16,6 +16,7 @@ public class enemyMovement : MonoBehaviour
     public bool isVisible;
     public bool isAudible;
     public bool isClose;
+    public bool isHome;
 
     //so enemy follows the player
     public Transform targetObject;
@@ -59,9 +60,12 @@ public class enemyMovement : MonoBehaviour
              //this will be a state for if the player reaches home, the enemy cannot look for them anymore
         if (stateCheck == true) 
         {
-            patrolFunction();
-            canvasUpdate[2].text = "Player is home and safe ";
-
+            patrolSafeFunction();
+            isHome = true;
+        }
+        else
+        {
+            isHome = false;
         }
 
         if (targetObject)
@@ -69,6 +73,7 @@ public class enemyMovement : MonoBehaviour
             isPlayerVisible();
             isPlayerAudible();
             isPlayerClose();
+            
 
 
 
@@ -121,10 +126,6 @@ public class enemyMovement : MonoBehaviour
             canvasUpdate[6].text = "Player: Caught";
 
         }
-        else if (col.gameObject.name == "Cube") //changing coloyr of stuff when touched   
-        {
-            col.gameObject.GetComponent<Renderer>().material.color = Color.green;
-        }
     }
    
     void seekFunction()
@@ -145,8 +146,15 @@ public class enemyMovement : MonoBehaviour
         destination = NextWaypoint(destination);
         canvasUpdate[1].text = "Enemy: Idling";
     }
-
     
+    void patrolSafeFunction()
+    {
+        if (Vector3.Distance(transform.position, destination) < 2.5)
+        {
+            destination = NextWaypoint(destination);
+        }
+        canvasUpdate[4].text = "Enemy: Patroling(player safe)";
+    }
     public Vector3 NextWaypoint(Vector3 currentPosition) //patroling shiz
     {
         Debug.Log(currentPosition);
@@ -171,16 +179,14 @@ public class enemyMovement : MonoBehaviour
     public void isPlayerVisible() //VISIBLE STATE (RAYCAST)
     {
 
-        // Create a vector from the enemy to the player and store the angle between it and forward.
+     
         Vector3 direction = targetObject.transform.position - transform.position;
         float angle = Vector3.Angle(direction, transform.forward);
 
-        // Create NavMesh hit var
+      
         NavMeshHit hit;
 
-        // If the Ray cast hits something other than the target, then true is returned, if not false
-        // So !hit is used to specify visibility and...
-        // If the angle between forward and where the player is, is less than half the angle of view...
+    
         if (!navAgent.Raycast(targetObject.transform.position, out hit) && angle < fieldOfViewAngle * 0.5f)
         {
             // ... the player is Visible
@@ -201,6 +207,8 @@ public class enemyMovement : MonoBehaviour
     }
 
     
+   
+
     public void isPlayerAudible() //AUDIO STATE
     {
         // If direct distance < 20, then audible
