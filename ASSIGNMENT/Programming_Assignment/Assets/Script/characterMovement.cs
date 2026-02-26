@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.InputSystem;
@@ -14,12 +15,14 @@ public class characterMovement : MonoBehaviour
     Animator animator;
     int isWalkingHash;
     int isRunningHash;
-
+    public Text[] canvasUpdate;
     PlayerInput input;
 
     Vector2 currentMovement;
     bool movementPressed;
     bool runPressed; 
+
+    bool homeReached;
 
     void Awake()
     {
@@ -31,6 +34,7 @@ public class characterMovement : MonoBehaviour
 
 
         input.characterController.Run.performed += ctx => runPressed = ctx.ReadValueAsButton();
+        
     }
 
 
@@ -59,6 +63,18 @@ public class characterMovement : MonoBehaviour
         transform.LookAt(positionToLookAt);
     }
 
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "home")
+        {
+            col.gameObject.GetComponent<Renderer>().material.color = Color.green;
+            canvasUpdate[0].text = "Home!";
+            homeReached = true; 
+
+        }
+     
+    }
+   
 
 
     void handleMovement()
