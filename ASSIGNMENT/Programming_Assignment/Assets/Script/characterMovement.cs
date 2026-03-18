@@ -1,11 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using System.Collections;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 using System.Diagnostics;
-
 
 
 
@@ -23,7 +18,7 @@ public class characterMovement : MonoBehaviour
     bool runPressed; 
 
     bool homeReached;
-
+    int coinsCollected;
     void Awake()
     {
         input = new PlayerInput();
@@ -74,7 +69,16 @@ public class characterMovement : MonoBehaviour
         }
      
     }
-   
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.name == "Coin")
+        {
+            Destroy(col.gameObject);
+            coinsCollected += 1;
+            //Debug.Log(coinsCollected);
+        }
+    }
+
 
 
     void handleMovement()
