@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 //game status data structure
 [Serializable]
-public struct GameStatus
+public struct GameStatus_EX
 {
 	public int currentLevel;
 	public int health;
@@ -17,7 +17,7 @@ public struct GameStatus
 public class SavingData : MonoBehaviour
 {
 
-	GameStatus gameStatus;
+	GameStatus_EX gameStatus;
 	string filePath;
 	const string FILE_NAME = "SaveStatus.json";
 
@@ -52,7 +52,7 @@ public class SavingData : MonoBehaviour
 			//load the file content as string
 			string loadedJson = File.ReadAllText (filePath + "/" + FILE_NAME);
 			//deserialise the loaded string into a GameStatus struct
-			gameStatus = JsonUtility.FromJson<GameStatus> (loadedJson);
+			gameStatus = JsonUtility.FromJson<GameStatus_EX> (loadedJson);
 			Debug.Log ("File loaded successfully");
 		} else {
 			//initilise a new game status
@@ -68,7 +68,7 @@ public class SavingData : MonoBehaviour
 	{
 		//retrieving saving location
 		filePath = Application.persistentDataPath;
-		gameStatus = new GameStatus ();
+		gameStatus = new GameStatus_EX ();
 		Debug.Log (filePath);
 		//startup initialisation
 		LoadGameStatus ();

@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 using System.Diagnostics;
+
 
 
 
@@ -17,8 +22,13 @@ public class characterMovement : MonoBehaviour
     bool movementPressed;
     bool runPressed; 
 
-    bool homeReached;
-    int coinsCollected;
+    public bool homeReached;
+
+    public bool isPaused = false;
+    public Button pauseButton;
+
+    public GameManager gm; 
+
     void Awake()
     {
         input = new PlayerInput();
@@ -40,6 +50,11 @@ public class characterMovement : MonoBehaviour
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
+        homeReached = false; 
+
+        gm.Start();
+       
+
     }
 
    
@@ -58,6 +73,25 @@ public class characterMovement : MonoBehaviour
         transform.LookAt(positionToLookAt);
     }
 
+
+
+    void OnApplicationPause(bool pauseStatus) {
+
+		if (gm!=null) {
+			// if Game is paused, savegame
+			if (pauseStatus) {
+				// Save Game data
+				//gm.SaveGameStatus ();
+			} else {
+				// Load Game data
+				gm.LoadGameStatus ();
+			}
+		}
+
+		
+	}
+
+    
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.name == "home")
@@ -69,15 +103,18 @@ public class characterMovement : MonoBehaviour
         }
      
     }
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.name == "Coin")
-        {
-            Destroy(col.gameObject);
-            coinsCollected += 1;
-            //Debug.Log(coinsCollected);
-        }
-    }
+    
+    void OnTriggerEnter (Collider col)
+	{
+		// The collision will return the gameObject itself- the name property allows different
+		// hitting a Coin benefits the economy!
+		if (col.gameObject.name == "Coin") {
+			// Destroy Coin
+			Destroy (col.gameObject);
+			//now update the state data
+			gm.gameStatus.coinsCollected += 1;
+		}//end of collision condition
+	}
 
 
 
@@ -120,5 +157,7 @@ public class characterMovement : MonoBehaviour
     {
         input.characterController.Disable();
     }
+
+
 
 }
