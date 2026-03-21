@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovementJSON : MonoBehaviour
 {
     Animator animator;
     int isWalkingHash;
@@ -26,13 +26,13 @@ public class CharacterMovement : MonoBehaviour
     public Button pauseButton;
 
     public bool homeReached;
-    int numberCoins = 20;
+    int numberCoins = 5;
 
     public Text gameStatusUI;
     public Text gameOverUI;
 
 
-    public SO_GameManager gm;
+    public JSON_GameManager gm;
 
 
     void Awake()
@@ -52,6 +52,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Start()
     {
+        gm = gameObject.GetComponentInChildren<JSON_GameManager>();
         gm.Start();
 
         animator = GetComponent<Animator>();
@@ -78,7 +79,7 @@ public class CharacterMovement : MonoBehaviour
         //Debug.Log (gm.gameStatus.health);
 
         //check current health level to determine whether player must die!
-        if (gm.gameStatus.health <= 0)
+        if (gm.JgameStatus.health <= 0)
         {
 
             // Update UI 
@@ -89,10 +90,14 @@ public class CharacterMovement : MonoBehaviour
             Destroy(gameObject);
 
             // Destroy remaining AIBalls
-         
+            GameObject[] remainingAIBalls = GameObject.FindGameObjectsWithTag("NPCBall");
+            foreach (GameObject go in remainingAIBalls)
+            {
+                Destroy(go);
+            }
         }
 
-        if (gm.gameStatus.coinsCollected >= numberCoins)
+        if (gm.JgameStatus.coinsCollected >= numberCoins)
         {
             // Update gamneoverUI with text 
             gameOverUI.text = "You Win!";
@@ -146,13 +151,13 @@ public class CharacterMovement : MonoBehaviour
         {
       
             Destroy(col.gameObject);
-            gm.gameStatus.coinsCollected += 1;
+            gm.JgameStatus.coinsCollected += 1;
         }
 
 
         if (col.gameObject.name == "Enemy")
         {
-            gm.gameStatus.health -= 1;
+            gm.JgameStatus.health -= 1;
         }
     }
 
@@ -239,7 +244,7 @@ public class CharacterMovement : MonoBehaviour
 
         // Update Player Position in the GameManager with the position of the Player in the scene
         // This will be stored on the JSON file when the application quits 
-        gm.gameStatus.playerPosition = GameObject.Find("Player").transform.position;
+        gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
 
     }
 
@@ -249,7 +254,7 @@ public class CharacterMovement : MonoBehaviour
 
     void UpdateSceneFromManager()
     {
-        GameObject.Find("Player").transform.position = gm.gameStatus.playerPosition;
+        GameObject.Find("Player").transform.position = gm.JgameStatus.playerPosition;
     }
 
 }
