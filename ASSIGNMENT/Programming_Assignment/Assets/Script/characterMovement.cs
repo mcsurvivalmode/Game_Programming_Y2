@@ -146,17 +146,21 @@ public class CharacterMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        // The collision will return the gameObject itself- the name property allows different
-        // hitting a Coin benefits the economy!
         if (col.gameObject.name == "Coin")
         {
-            // Destroy Coin
+      
             Destroy(col.gameObject);
-            //now update the state data
             gm.gameStatus.coinsCollected += 1;
-        }//end of collision condition
+        }
+
+
+        if (col.gameObject.name == "Enemy")
+        {
+            gm.gameStatus.health -= 1;
+        }
     }
 
+ 
 
 
     void HandleMovement()
@@ -199,7 +203,7 @@ public class CharacterMovement : MonoBehaviour
         input.characterController.Disable();
     }
 
-    void OnApplicationPause(bool pauseStatus)
+    public void OnApplicationPause(bool pauseStatus)
     {
 
         if (gm != null)

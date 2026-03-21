@@ -51,7 +51,7 @@ public class SO_GameManager : ScriptableObject
         gameStatus.playerName = "Walter";
         gameStatus.currentLevel = 1;
         gameStatus.spawnPoint = "Beginning";//reference to a game object
-        gameStatus.health = 100;
+        gameStatus.health = 10;
         gameStatus.coinsCollected = 0;
         gameStatus.playerPosition = new Vector3(0, 0, 0);
        

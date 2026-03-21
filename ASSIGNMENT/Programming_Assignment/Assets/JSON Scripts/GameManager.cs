@@ -93,7 +93,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         ShowStatus();
-        coinsCollected = FindAnyObjectByType<CharacterMovement>();
         
         
     }
