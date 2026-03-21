@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 
 
-public class characterMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
     Animator animator;
     int isWalkingHash;
@@ -20,14 +20,20 @@ public class characterMovement : MonoBehaviour
 
     Vector2 currentMovement;
     bool movementPressed;
-    bool runPressed; 
-
-    public bool homeReached;
+    bool runPressed;
 
     public bool isPaused = false;
     public Button pauseButton;
 
-    public GameManager gm; 
+    public bool homeReached;
+    int numberCoins = 20;
+
+    public Text gameStatusUI;
+    public Text gameOverUI;
+
+
+    public SO_GameManager gm;
+
 
     void Awake()
     {
@@ -46,25 +52,74 @@ public class characterMovement : MonoBehaviour
 
     void Start()
     {
+        gm.Start();
+
         animator = GetComponent<Animator>();
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
-        homeReached = false; 
+        homeReached = false;
 
-        gm.Start();
-       
+
+        UpdateSceneFromManager();
+
 
     }
 
    
     void Update()
     {
-        handleMovement();
-        handleRotation();
+        HandleMovement();
+        HandleRotation();
     }
 
-    void handleRotation()
+    private void FixedUpdate()
+    {
+        //Debug.Log (gm.gameStatus.health);
+
+        //check current health level to determine whether player must die!
+        if (gm.gameStatus.health <= 0)
+        {
+
+            // Update UI 
+            gameOverUI.text = "You Lose!";
+            gm.resetGame();
+
+            //MonoBehaviour has a gameObject property for the current game object
+            Destroy(gameObject);
+
+            // Destroy remaining AIBalls
+            GameObject[] remainingAIBalls = GameObject.FindGameObjectsWithTag("NPCBall");
+            foreach (GameObject go in remainingAIBalls)
+            {
+                Destroy(go);
+            }
+        }
+
+        if (gm.gameStatus.coinsCollected >= numberCoins)
+        {
+            // Update gamneoverUI with text 
+            gameOverUI.text = "You Win!";
+            // Reset Gamemanager variuables
+            gm.resetGame();
+
+            //MonoBehaviour has a gameObject property for the current game object
+            Destroy(gameObject);
+
+            // Destroy remaining AIBalls
+            GameObject[] remainingAIBalls = GameObject.FindGameObjectsWithTag("NPCBall");
+            foreach (GameObject go in remainingAIBalls)
+            {
+                Destroy(go);
+            }
+        }
+
+        gameStatusUI.text = gm.UpdateStatus();
+    }
+
+
+
+    void HandleRotation()
     {
         Vector3 currentPosition = transform.position; 
         Vector3 newPosition = new Vector3(currentMovement.x, 0, currentMovement.y);
@@ -75,21 +130,6 @@ public class characterMovement : MonoBehaviour
 
 
 
-    void OnApplicationPause(bool pauseStatus) {
-
-		if (gm!=null) {
-			// if Game is paused, savegame
-			if (pauseStatus) {
-				// Save Game data
-				//gm.SaveGameStatus ();
-			} else {
-				// Load Game data
-				gm.LoadGameStatus ();
-			}
-		}
-
-		
-	}
 
     
     void OnCollisionEnter(Collision col)
@@ -103,22 +143,23 @@ public class characterMovement : MonoBehaviour
         }
      
     }
-    
-    void OnTriggerEnter (Collider col)
-	{
-		// The collision will return the gameObject itself- the name property allows different
-		// hitting a Coin benefits the economy!
-		if (col.gameObject.name == "Coin") {
-			// Destroy Coin
-			Destroy (col.gameObject);
-			//now update the state data
-			gm.gameStatus.coinsCollected += 1;
-		}//end of collision condition
-	}
+
+    void OnTriggerEnter(Collider col)
+    {
+        // The collision will return the gameObject itself- the name property allows different
+        // hitting a Coin benefits the economy!
+        if (col.gameObject.name == "Coin")
+        {
+            // Destroy Coin
+            Destroy(col.gameObject);
+            //now update the state data
+            gm.gameStatus.coinsCollected += 1;
+        }//end of collision condition
+    }
 
 
 
-    void handleMovement()
+    void HandleMovement()
     {
         bool isRunning = animator.GetBool(isRunningHash);
         bool isWalking = animator.GetBool(isWalkingHash);
@@ -158,6 +199,57 @@ public class characterMovement : MonoBehaviour
         input.characterController.Disable();
     }
 
+    void OnApplicationPause(bool pauseStatus)
+    {
 
+        if (gm != null)
+        {
+            // if Game is paused, savegame
+            if (pauseStatus)
+            {
+                // Save Game data
+                //gm.SaveGameStatus ();
+            }
+            else
+            {
+                // Load Game data
+                gm.LoadGameStatus();
+            }
+        }
+
+        //Debug.Log("OnApplicationPause Called");
+    }
+
+    void OnApplicationQuit()
+    {
+
+        // Save Scene Data to the GameManager 
+        SaveFromSceneToManager();
+
+        //Debug.Log("OnApplicationQuit Called");
+    }
+
+    // Save data from the scene to the manager
+    void SaveFromSceneToManager()
+    {
+
+        // Empty the GameManager NPCBalls Array so that there is always
+        // the correct number of balls after some have been destroyed
+       
+
+        // Update Player Position in the GameManager with the position of the Player in the scene
+        // This will be stored on the JSON file when the application quits 
+        gm.gameStatus.playerPosition = GameObject.Find("Player").transform.position;
+
+    }
+
+
+
+
+
+    void UpdateSceneFromManager()
+    {
+        GameObject.Find("Player").transform.position = gm.gameStatus.playerPosition;
+    }
 
 }

@@ -5,13 +5,13 @@ using UnityEngine.AI;
 using UnityEngine.TextCore.Text;
 using UnityEditor.Experimental.GraphView;
 
-public class enemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     NavMeshAgent navAgent;
     Vector3 destination;
 
     //canvas update on state!
-    public Text[] canvasUpdate;
+    public Text[] CanvasUpdate;
 
     public bool isVisible;
     public bool isAudible;
@@ -26,7 +26,7 @@ public class enemyMovement : MonoBehaviour
     Vector2 groundDeltaPosition;
     Vector2 velocity = Vector2.zero;
 
-    characterMovement stateCheck;
+    CharacterMovement stateCheck;
 
     
 
@@ -50,7 +50,7 @@ public class enemyMovement : MonoBehaviour
         destination = NextWaypoint(Vector3.zero);
         col = GetComponent<SphereCollider>();
 
-        stateCheck = FindAnyObjectByType<characterMovement>();
+        stateCheck = FindAnyObjectByType<CharacterMovement>();
     }
 
     
@@ -60,7 +60,7 @@ public class enemyMovement : MonoBehaviour
              //this will be a state for if the player reaches home, the enemy cannot look for them anymore
         if (stateCheck == true) 
         {
-            patrolSafeFunction();
+            //PatrolSafeFunction();
             isHome = true;
         }
         else
@@ -70,9 +70,9 @@ public class enemyMovement : MonoBehaviour
 
         if (targetObject)
         {
-            isPlayerVisible();
-            isPlayerAudible();
-            isPlayerClose();
+            IsPlayerVisible();
+            IsPlayerAudible();
+            IsPlayerClose();
             
 
 
@@ -80,11 +80,11 @@ public class enemyMovement : MonoBehaviour
 
             if (isVisible && isClose)
             {
-                seekFunction(); //is visible and near 
+                SeekFunction(); //is visible and near 
             }
             else if (isVisible && !isClose)
             {
-                patrolFunction(); //is visible and not near 
+                PatrolFunction(); //is visible and not near 
             }
             else if (!isVisible && !isAudible)
             {
@@ -92,7 +92,7 @@ public class enemyMovement : MonoBehaviour
             }
             else if (!isVisible && isAudible)
             {
-                patrolFunction();
+                PatrolFunction();
             } 
         }
         else
@@ -123,38 +123,38 @@ public class enemyMovement : MonoBehaviour
     {
         if (col.gameObject.name == "player")
         {
-            canvasUpdate[6].text = "Player: Caught";
+            CanvasUpdate[6].text = "Player: Caught";
 
         }
     }
    
-    void seekFunction()
+    void SeekFunction()
     {
         destination = targetObject.position;
-        canvasUpdate[3].text = "Enemy: Seeking";
+        CanvasUpdate[3].text = "Enemy: Seeking";
     }
-    void patrolFunction()
+    void PatrolFunction()
     {
         if (Vector3.Distance(transform.position, destination) < 2.5)
         {
             destination = NextWaypoint(destination);
         }
-        canvasUpdate[2].text = "Enemy: Patrolling";
+        CanvasUpdate[2].text = "Enemy: Patrolling";
     }
     void IdleFunction()
     {
         destination = NextWaypoint(destination);
-        canvasUpdate[1].text = "Enemy: Idling";
+        CanvasUpdate[1].text = "Enemy: Idling";
     }
     
-    void patrolSafeFunction()
-    {
-        if (Vector3.Distance(transform.position, destination) < 2.5)
-        {
-            destination = NextWaypoint(destination);
-        }
-        canvasUpdate[4].text = "Enemy: Patroling(player safe)";
-    }
+    //void PatrolSafeFunction()
+    //{
+        //if (Vector3.Distance(transform.position, destination) < 2.5)
+        //{
+            //destination = NextWaypoint(destination);
+        //}
+        //CanvasUpdate[4].text = "Enemy: Patroling(player safe)";
+    //}
     public Vector3 NextWaypoint(Vector3 currentPosition) //patroling shiz
     {
         Debug.Log(currentPosition);
@@ -176,7 +176,7 @@ public class enemyMovement : MonoBehaviour
     }
 
     
-    public void isPlayerVisible() //VISIBLE STATE (RAYCAST)
+    public void IsPlayerVisible() //VISIBLE STATE (RAYCAST)
     {
 
      
@@ -193,7 +193,7 @@ public class enemyMovement : MonoBehaviour
             Debug.Log("Player is VISIBLE");
             isVisible = true;
             // Update Close Text on Canvas
-            canvasUpdate[0].enabled = true;
+            CanvasUpdate[0].enabled = true;
 
         }
         else
@@ -202,14 +202,14 @@ public class enemyMovement : MonoBehaviour
             isVisible = false;
             Debug.Log("Player is NOT VISIBLE");
             // Update Close Text on Canvas
-            canvasUpdate[0].enabled = false;
+            CanvasUpdate[0].enabled = false;
         }
     }
 
     
    
 
-    public void isPlayerAudible() //AUDIO STATE
+    public void IsPlayerAudible() //AUDIO STATE
     {
         // If direct distance < 20, then audible
         if (Vector3.Distance(transform.position, targetObject.position) < 20.0f)
@@ -217,18 +217,18 @@ public class enemyMovement : MonoBehaviour
             // Is Audible
             isAudible = true;
             // Update Close Text on Canvas
-            canvasUpdate[1].enabled = true;
+            CanvasUpdate[1].enabled = true;
         }
         else
         {
             // Is not Audible
             isAudible = false;
             // Update Close Text on Canvas
-            canvasUpdate[1].enabled = false;
+            CanvasUpdate[1].enabled = false;
         }
     }
 
-    public void isPlayerClose() //PLAYER DISTANCE STATE
+    public void IsPlayerClose() //PLAYER DISTANCE STATE
     {
         NavMeshPath path = new NavMeshPath();
         if (navAgent.enabled && navAgent.isOnNavMesh)
@@ -260,7 +260,7 @@ public class enemyMovement : MonoBehaviour
             // Set Close Bool true
             isClose = true;
             // Update Close Text on Canvas
-            canvasUpdate[2].enabled = true;
+            CanvasUpdate[2].enabled = true;
         }
         else
         {
@@ -268,7 +268,7 @@ public class enemyMovement : MonoBehaviour
             // Set Close Bool false
             isClose = false;
             // Update Close Text on Canvas
-            canvasUpdate[2].enabled = false;
+            CanvasUpdate[2].enabled = false;
         }
     }
 
