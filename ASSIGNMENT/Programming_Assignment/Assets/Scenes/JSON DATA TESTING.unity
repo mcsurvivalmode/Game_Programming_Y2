@@ -901,7 +901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -393, y: 206}
+  m_AnchoredPosition: {x: -312, y: 203}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310805422
@@ -1226,7 +1226,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.19566701, y: 0.010505325, z: -0.0020961866, w: 0.9806119}
-  m_LocalPosition: {x: 0.6138092, y: 4.2999997, z: 28.5}
+  m_LocalPosition: {x: 0.67700005, y: 4.2999997, z: 28.397999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1765,7 +1765,7 @@ Transform:
   m_GameObject: {fileID: 472671702}
   serializedVersion: 2
   m_LocalRotation: {x: 0.19566701, y: 0.010505325, z: -0.0020961869, w: 0.9806119}
-  m_LocalPosition: {x: 0.6138092, y: 4.2999997, z: 28.5}
+  m_LocalPosition: {x: 0.67700005, y: 4.2999997, z: 28.397999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2841,7 +2841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -317, y: -95}
+  m_AnchoredPosition: {x: 165, y: -122}
   m_SizeDelta: {x: 313.6439, y: 143.9083}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &703081761
@@ -3549,7 +3549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -317, y: -95}
+  m_AnchoredPosition: {x: -232, y: -125}
   m_SizeDelta: {x: 313.6439, y: 143.9083}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &814810025
@@ -5281,7 +5281,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -393, y: 163}
+  m_AnchoredPosition: {x: -312.00003, y: 159.99997}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414427263
@@ -6968,7 +6968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -7134,7 +7134,7 @@ Transform:
   m_GameObject: {fileID: 1964298416}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.3, y: 1.1, z: 43}
+  m_LocalPosition: {x: 0.6, y: 1.1, z: 40.05}
   m_LocalScale: {x: 2.2374, y: 2.2374, z: 2.2374}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7456,7 +7456,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -393, y: 123}
+  m_AnchoredPosition: {x: -312.00003, y: 119.99997}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1980947798
@@ -7781,7 +7781,7 @@ PrefabInstance:
       objectReference: {fileID: 553583370}
     - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.76380926
+      value: 0.827
       objectReference: {fileID: 0}
     - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7789,7 +7789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.5
+      value: 35.398
       objectReference: {fileID: 0}
     - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7823,8 +7823,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 426026274394455015, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -10,41 +10,23 @@ using System.Diagnostics;
 
 
 
-public class CharacterMovement : MonoBehaviour
+public class JSON_FileScript : MonoBehaviour
 {
-    Animator animator;
-    int isWalkingHash;
-    int isRunningHash;
-    public Text[] canvasUpdate;
-    PlayerInput input;
-
-    Vector2 currentMovement;
-    bool movementPressed;
-    bool runPressed;
 
     public bool isPaused = false;
     public Button pauseButton;
 
-    public bool homeReached;
     int numberCoins = 5;
 
     public Text gameStatusUI;
     public Text gameOverUI;
 
 
-    public SO_GameManager gm;
+    public JSON_GameManager gm;
 
 
     void Awake()
     {
-        input = new PlayerInput();
-
-        input.characterController.Movement.performed += ctx => {
-            currentMovement = ctx.ReadValue<Vector2>();
-            movementPressed = currentMovement.x != 0 || currentMovement.y != 0;};
-
-
-        input.characterController.Run.performed += ctx => runPressed = ctx.ReadValueAsButton();
         
     }
 
@@ -52,25 +34,14 @@ public class CharacterMovement : MonoBehaviour
 
     void Start()
     {
-        gm.Start();
-
-        animator = GetComponent<Animator>();
-
-        isWalkingHash = Animator.StringToHash("isWalking");
-        isRunningHash = Animator.StringToHash("isRunning");
-        homeReached = false;
-
-
         UpdateSceneFromManager();
-
 
     }
 
    
     void Update()
     {
-        HandleMovement();
-        HandleRotation();
+       
     }
 
     private void FixedUpdate()
@@ -78,7 +49,7 @@ public class CharacterMovement : MonoBehaviour
         //Debug.Log (gm.gameStatus.health);
 
         //check current health level to determine whether player must die!
-        if (gm.gameStatus.health <= 0)
+        if (gm.JgameStatus.health <= 0)
         {
 
             // Update UI 
@@ -89,10 +60,14 @@ public class CharacterMovement : MonoBehaviour
             Destroy(gameObject);
 
             // Destroy remaining AIBalls
-         
+            GameObject[] remainingAIBalls = GameObject.FindGameObjectsWithTag("NPCBall");
+            foreach (GameObject go in remainingAIBalls)
+            {
+                Destroy(go);
+            }
         }
 
-        if (gm.gameStatus.coinsCollected >= numberCoins)
+        if (gm.JgameStatus.coinsCollected >= numberCoins)
         {
             // Update gamneoverUI with text 
             gameOverUI.text = "You Win!";
@@ -114,90 +89,24 @@ public class CharacterMovement : MonoBehaviour
     }
 
 
-
-    void HandleRotation()
-    {
-        Vector3 currentPosition = transform.position; 
-        Vector3 newPosition = new Vector3(currentMovement.x, 0, currentMovement.y);
-        Vector3 positionToLookAt = currentPosition + newPosition;
-
-        transform.LookAt(positionToLookAt);
-    }
-
-
-
-
-    
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.name == "home")
-        {
-            col.gameObject.GetComponent<Renderer>().material.color = Color.green;
-            canvasUpdate[0].text = "Home!";
-            homeReached = true; 
-
-        }
-     
-    }
-
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.name == "Coin")
         {
       
             Destroy(col.gameObject);
-            gm.gameStatus.coinsCollected += 1;
+            gm.JgameStatus.coinsCollected += 1;
         }
 
 
         if (col.gameObject.name == "Enemy")
         {
-            gm.gameStatus.health -= 1;
+            gm.JgameStatus.health -= 1;
         }
     }
 
- 
 
 
-    void HandleMovement()
-    {
-        bool isRunning = animator.GetBool(isRunningHash);
-        bool isWalking = animator.GetBool(isWalkingHash);
-
-        //if walking is true and false 
-        if (movementPressed && !isWalking)
-        {
-            animator.SetBool(isWalkingHash, true);
-        }
-        if (!movementPressed && isWalking)
-        {
-            animator.SetBool(isWalkingHash, false);
-        }
-
-        //if walking and running is true and false 
-        if ((movementPressed && runPressed) && !isRunning)
-        {
-            animator.SetBool(isRunningHash, true);
-        }
-
-        if ((!movementPressed || !runPressed) && isRunning)
-        {
-            animator.SetBool(isRunningHash, false);
-        }
-
-
-    }
-
-    void OnEnable()
-    {
-        
-        input.characterController.Enable();
-    }
-
-    void OnDisable()
-    {
-        input.characterController.Disable();
-    }
 
     public void OnApplicationPause(bool pauseStatus)
     {
@@ -239,7 +148,7 @@ public class CharacterMovement : MonoBehaviour
 
         // Update Player Position in the GameManager with the position of the Player in the scene
         // This will be stored on the JSON file when the application quits 
-        gm.gameStatus.playerPosition = GameObject.Find("Player").transform.position;
+        gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
 
     }
 
@@ -249,7 +158,7 @@ public class CharacterMovement : MonoBehaviour
 
     void UpdateSceneFromManager()
     {
-        GameObject.Find("Player").transform.position = gm.gameStatus.playerPosition;
+        GameObject.Find("Player").transform.position = gm.JgameStatus.playerPosition;
     }
 
 }
