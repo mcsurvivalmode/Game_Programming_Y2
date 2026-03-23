@@ -2365,7 +2365,7 @@ GameObject:
   - component: {fileID: 628947279}
   - component: {fileID: 628947281}
   m_Layer: 5
-  m_Name: game manager json
+  m_Name: Game Manager JSon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5757,57 +5757,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424134616}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1441664332
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1441664334}
-  - component: {fileID: 1441664333}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1441664333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441664332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd4f7f7bd6aa9364c90b14c63dd51f48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::JSON_GameManager
-  JgameStatus:
-    playerName: 
-    currentLevel: 0
-    spawnPoint: 
-    health: 0
-    coinsCollected: 0
-    playerPosition: {x: 0, y: 0, z: 0}
---- !u!4 &1441664334
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441664332}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4107, y: 0, z: 10.39254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1492285219
 GameObject:
   m_ObjectHideFlags: 0
@@ -5948,6 +5897,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492285219}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1506624085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1506624087}
+  - component: {fileID: 1506624088}
+  m_Layer: 0
+  m_Name: GameManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1506624087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506624085}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 352.70898, y: 270.56815, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1506624088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506624085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4f7f7bd6aa9364c90b14c63dd51f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JSON_GameManager
+  JgameStatus:
+    playerName: 
+    currentLevel: 0
+    spawnPoint: 
+    health: 0
+    coinsCollected: 0
+    playerPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1515188062
 GameObject:
   m_ObjectHideFlags: 0
@@ -8185,9 +8185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e71a759f61feb40ab25b4c0d76acc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JSON_FileScript
+  isPaused: 0
+  pauseButton: {fileID: 310805422}
   gameStatusUI: {fileID: 628947279}
   gameOverUI: {fileID: 798339917}
-  gm: {fileID: 1441664333}
+  gm: {fileID: 1506624088}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -8201,6 +8203,6 @@ SceneRoots:
   - {fileID: 1715888083}
   - {fileID: 1939341722}
   - {fileID: 1794584448}
+  - {fileID: 1506624087}
   - {fileID: 143494111}
   - {fileID: 1964298420}
-  - {fileID: 1441664334}

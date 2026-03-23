@@ -22,9 +22,6 @@ public class CharacterMovementJSON : MonoBehaviour
     bool movementPressed;
     bool runPressed;
 
-    public bool isPaused = false;
-    public Button pauseButton;
-
     public bool homeReached;
     int numberCoins = 5;
 
@@ -72,6 +69,8 @@ public class CharacterMovementJSON : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
+
+        gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
     }
 
     private void FixedUpdate()
@@ -90,11 +89,7 @@ public class CharacterMovementJSON : MonoBehaviour
             Destroy(gameObject);
 
             // Destroy remaining AIBalls
-            GameObject[] remainingAIBalls = GameObject.FindGameObjectsWithTag("NPCBall");
-            foreach (GameObject go in remainingAIBalls)
-            {
-                Destroy(go);
-            }
+          
         }
 
         if (gm.JgameStatus.coinsCollected >= numberCoins)

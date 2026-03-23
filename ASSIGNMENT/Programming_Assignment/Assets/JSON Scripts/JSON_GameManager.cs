@@ -69,6 +69,7 @@ public class JSON_GameManager : MonoBehaviour
         JgameStatus.coinsCollected = 0;
         JgameStatus.playerPosition = new Vector3(0, 0, 0);
         
+        Debug.Log("File reset");
         // Save initalisation scores
         SaveGameStatus();
     }

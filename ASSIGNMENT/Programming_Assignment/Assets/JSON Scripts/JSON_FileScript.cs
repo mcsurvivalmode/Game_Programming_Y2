@@ -12,10 +12,6 @@ using System.Diagnostics;
 
 public class JSON_FileScript : MonoBehaviour
 {
-
-    public bool isPaused = false;
-    public Button pauseButton;
-
     int numberCoins = 5;
 
     public Text gameStatusUI;
@@ -34,14 +30,19 @@ public class JSON_FileScript : MonoBehaviour
 
     void Start()
     {
+        gm = gameObject.GetComponentInChildren<JSON_GameManager>();
+        gm.Start();
+
+
         UpdateSceneFromManager();
+
 
     }
 
    
     void Update()
     {
-       
+        gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
     }
 
     private void FixedUpdate()
@@ -60,11 +61,7 @@ public class JSON_FileScript : MonoBehaviour
             Destroy(gameObject);
 
             // Destroy remaining AIBalls
-            GameObject[] remainingAIBalls = GameObject.FindGameObjectsWithTag("NPCBall");
-            foreach (GameObject go in remainingAIBalls)
-            {
-                Destroy(go);
-            }
+          
         }
 
         if (gm.JgameStatus.coinsCollected >= numberCoins)
@@ -77,12 +74,6 @@ public class JSON_FileScript : MonoBehaviour
             //MonoBehaviour has a gameObject property for the current game object
             Destroy(gameObject);
 
-            // Destroy remaining AIBalls
-            GameObject[] remainingAIBalls = GameObject.FindGameObjectsWithTag("NPCBall");
-            foreach (GameObject go in remainingAIBalls)
-            {
-                Destroy(go);
-            }
         }
 
         gameStatusUI.text = gm.UpdateStatus();
@@ -105,8 +96,7 @@ public class JSON_FileScript : MonoBehaviour
         }
     }
 
-
-
+ 
 
     public void OnApplicationPause(bool pauseStatus)
     {
