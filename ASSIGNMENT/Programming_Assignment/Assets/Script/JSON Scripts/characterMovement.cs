@@ -22,9 +22,6 @@ public class CharacterMovement : MonoBehaviour
     bool movementPressed;
     bool runPressed;
 
-    public bool isPaused = false;
-    public Button pauseButton;
-
     public bool homeReached;
     int numberCoins = 10;
 
@@ -188,26 +185,8 @@ public class CharacterMovement : MonoBehaviour
         input.characterController.Disable();
     }
 
-    public void OnApplicationPause(bool pauseStatus)
-    {
-
-        if (gm != null)
-        {
-            // if Game is paused, savegame
-            if (pauseStatus)
-            {
-                // Save Game data
-                //gm.SaveGameStatus ();
-            }
-            else
-            {
-                // Load Game data
-                gm.LoadGameStatus();
-            }
-        }
-
-        //Debug.Log("OnApplicationPause Called");
-    }
+    
+    
 
     void OnApplicationQuit()
     {

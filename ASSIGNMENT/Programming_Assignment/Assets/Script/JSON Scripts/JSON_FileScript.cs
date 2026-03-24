@@ -17,6 +17,9 @@ public class JSON_FileScript : MonoBehaviour
     public Text gameStatusUI;
     public Text gameOverUI;
 
+    public bool isPaused = false;
+    public Button pauseButton;
+
 
     public JSON_GameManager gm;
 
@@ -42,17 +45,11 @@ public class JSON_FileScript : MonoBehaviour
    
     void Update()
     {
-        gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
+        //gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
     }
 
     private void FixedUpdate()
     {
-        //Debug.Log (gm.gameStatus.health);
-
-        //adding deaths to counter 
-        
-
-       
 
         gameStatusUI.text = gm.UpdateStatus();
     }
@@ -121,17 +118,34 @@ public class JSON_FileScript : MonoBehaviour
 
         // Update Player Position in the GameManager with the position of the Player in the scene
         // This will be stored on the JSON file when the application quits 
-        gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
+        //gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
 
     }
 
 
+    public void PauseGame()
+    {
+        if (!isPaused) {
 
+            Time.timeScale = 0;
+            //Debug.Break();
+            isPaused = true;
+            GameObject.Find("Pause").GetComponentInChildren<Text>().text = "Resume";
+        }
+        else
+        {
+            Time.timeScale = 1;
+            //Debug.Break();
+            isPaused = false;
+            GameObject.Find("Pause").GetComponentInChildren<Text>().text = "Pause";
+        }
+
+    }
 
 
     void UpdateSceneFromManager()
     {
-        GameObject.Find("Player").transform.position = gm.JgameStatus.playerPosition;
+        //GameObject.Find("Player").transform.position = gm.JgameStatus.playerPosition;
     }
 
 }

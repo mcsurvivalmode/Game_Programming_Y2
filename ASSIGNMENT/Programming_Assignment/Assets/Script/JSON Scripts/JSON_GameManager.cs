@@ -48,9 +48,10 @@ public class JSON_GameManager : MonoBehaviour
             string loadedJson = File.ReadAllText(filePath + "/" + FILE_NAME);
             //deserialise the loaded string into a GameStatus struct
             JgameStatus = JsonUtility.FromJson<JSON_GameStatus>(loadedJson);
-            Debug.Log("File loaded successfully");
             GameObject.Find("Player").transform.position = JgameStatus.playerPosition;
 
+            Debug.Log("File loaded successfully");
+            
 
 
 
@@ -65,6 +66,7 @@ public class JSON_GameManager : MonoBehaviour
 
     public void resetGame()
     {
+
         JgameStatus.spawnPoint = "Beginning";//reference to a game object
         JgameStatus.health = 10;
         JgameStatus.Deaths = 0;
@@ -85,6 +87,7 @@ public class JSON_GameManager : MonoBehaviour
         //write a text file containing the string value as simple text
         File.WriteAllText(filePath + "/" + FILE_NAME, gameStatusJson);
         Debug.Log("File created and saved");
+        JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
     }
 
     //build our UI controls- a simple label
@@ -92,7 +95,6 @@ public class JSON_GameManager : MonoBehaviour
     {
         //building the formatted string to be shown to the user
         string message = "";
-
         message += "Spawn Point: " + JgameStatus.spawnPoint + "\n";
         message += "Deaths: " + JgameStatus.Deaths + "\n";
         message += "Your HighScore: " + JgameStatus.coinsCollected + "\n";
