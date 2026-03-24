@@ -20,6 +20,7 @@ public struct JSON_GameStatus
 // Create Game Class by extending MonoBehaviour
 public class JSON_GameManager : MonoBehaviour
 {
+    
     // Declare Struct for GameStatus (HUD Data)
     public JSON_GameStatus JgameStatus;
     // Variable for file path
