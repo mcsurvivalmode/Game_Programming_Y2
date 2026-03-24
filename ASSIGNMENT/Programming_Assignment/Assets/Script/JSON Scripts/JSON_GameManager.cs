@@ -11,8 +11,9 @@ using System.Collections.Generic;
 public struct JSON_GameStatus
 {
     public string spawnPoint;
-    public int health;
+    
     public int Deaths;
+    public int health;
     public int coinsCollected;
     public Vector3 playerPosition;
 }
@@ -97,6 +98,7 @@ public class JSON_GameManager : MonoBehaviour
         //building the formatted string to be shown to the user
         string message = "";
         message += "Spawn Point: " + JgameStatus.spawnPoint + "\n";
+        message += "Health: " + JgameStatus.health + "\n";
         message += "Deaths: " + JgameStatus.Deaths + "\n";
         message += "Your HighScore: " + JgameStatus.coinsCollected + "\n";
         //Debug.Log(message);

@@ -6,7 +6,7 @@ public struct GameStatus_SO
 {
     public string playerName;
     public int currentLevel;
-    public int health;
+   
     public int coinsCollected;
     public Vector3 playerPosition;
 }
@@ -30,7 +30,7 @@ public class SO_GameManager : ScriptableObject
     public void LoadGameStatus()
     {
         // Check for previous play or death!
-        if (gameStatus.playerName == null || gameStatus.health <= 0)
+        if (gameStatus.playerName == null)
         {
             // If new game, create new struct
             gameStatus = new GameStatus_SO();
@@ -49,7 +49,6 @@ public class SO_GameManager : ScriptableObject
         //initilise a new game status
         gameStatus.playerName = "Walter";
         gameStatus.currentLevel = 1;
-        gameStatus.health = 10;
         gameStatus.coinsCollected = 0;
         gameStatus.playerPosition = new Vector3(0, 0, 0);
        
@@ -64,7 +63,7 @@ public class SO_GameManager : ScriptableObject
         string message = "";
         message += "Player Name: " + gameStatus.playerName + "\n";
         message += "Current Level: " + gameStatus.currentLevel + "\n";
-        message += "Health: " + gameStatus.health + "\n";
+   
         message += "Coins: " + gameStatus.coinsCollected + "\n";
         return message;
     }

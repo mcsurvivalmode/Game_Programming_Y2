@@ -75,13 +75,7 @@ public class CharacterMovement : MonoBehaviour
         //Debug.Log (gm.gameStatus.health);
 
         //check current health level to determine whether player must die!
-        if (gm.gameStatus.health <= 0)
-        {
-
-            // Update UI 
-            gameOverUI.text = "You Lose!";
-            gm.resetGame();
-        }
+       
 
         if (gm.gameStatus.coinsCollected >= numberCoins)
         {
@@ -132,14 +126,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
 
-        if (col.gameObject.name == "Enemy")
-        {
-            gm.gameStatus.health -= 1;
-        }
-        if (col.gameObject.name == "Checkpoint1")
-        {
-            gm.gameStatus.currentLevel += 1;
-        }
+ 
     }
 
  
