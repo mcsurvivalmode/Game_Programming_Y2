@@ -20,7 +20,7 @@ public class JSON_FileScript : MonoBehaviour
     public bool isPaused = false;
     public Button pauseButton;
 
-
+    [SerializeField]
     public JSON_GameManager gm;
 
 
