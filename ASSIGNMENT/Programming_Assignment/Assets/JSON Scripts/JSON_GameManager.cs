@@ -10,10 +10,9 @@ using System.Collections.Generic;
 [Serializable]
 public struct JSON_GameStatus
 {
-    public string playerName;
-    public int currentLevel;
     public string spawnPoint;
     public int health;
+    public int Deaths;
     public int coinsCollected;
     public Vector3 playerPosition;
 }
@@ -50,6 +49,11 @@ public class JSON_GameManager : MonoBehaviour
             //deserialise the loaded string into a GameStatus struct
             JgameStatus = JsonUtility.FromJson<JSON_GameStatus>(loadedJson);
             Debug.Log("File loaded successfully");
+            GameObject.Find("Player").transform.position = JgameStatus.playerPosition;
+
+
+
+
         }
         else
         {
@@ -61,13 +65,12 @@ public class JSON_GameManager : MonoBehaviour
 
     public void resetGame()
     {
-        //initilise a new game status
-        JgameStatus.playerName = "Walter";
-        JgameStatus.currentLevel = 1;
         JgameStatus.spawnPoint = "Beginning";//reference to a game object
         JgameStatus.health = 10;
+        JgameStatus.Deaths = 0;
         JgameStatus.coinsCollected = 0;
         JgameStatus.playerPosition = new Vector3(0, 0, 0);
+        GameObject.Find("Player").transform.position = JgameStatus.playerPosition;
         
         Debug.Log("File reset");
         // Save initalisation scores
@@ -89,11 +92,10 @@ public class JSON_GameManager : MonoBehaviour
     {
         //building the formatted string to be shown to the user
         string message = "";
-        message += "Player Name: " + JgameStatus.playerName + "\n";
-        message += "Current Level: " + JgameStatus.currentLevel + "\n";
+
         message += "Spawn Point: " + JgameStatus.spawnPoint + "\n";
-        message += "Health: " + JgameStatus.health + "\n";
-        message += "Coins: " + JgameStatus.coinsCollected + "\n";
+        message += "Deaths: " + JgameStatus.Deaths + "\n";
+        message += "Your HighScore: " + JgameStatus.coinsCollected + "\n";
         //Debug.Log(message);
         return message;
 

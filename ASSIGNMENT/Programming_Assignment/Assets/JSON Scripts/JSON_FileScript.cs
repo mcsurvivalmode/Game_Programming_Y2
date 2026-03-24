@@ -49,32 +49,10 @@ public class JSON_FileScript : MonoBehaviour
     {
         //Debug.Log (gm.gameStatus.health);
 
-        //check current health level to determine whether player must die!
-        if (gm.JgameStatus.health <= 0)
-        {
+        //adding deaths to counter 
+        
 
-            // Update UI 
-            gameOverUI.text = "You Lose!";
-            gm.resetGame();
-
-            //MonoBehaviour has a gameObject property for the current game object
-            Destroy(gameObject);
-
-            // Destroy remaining AIBalls
-          
-        }
-
-        if (gm.JgameStatus.coinsCollected >= numberCoins)
-        {
-            // Update gamneoverUI with text 
-            gameOverUI.text = "You Win!";
-            // Reset Gamemanager variuables
-            gm.resetGame();
-
-            //MonoBehaviour has a gameObject property for the current game object
-            Destroy(gameObject);
-
-        }
+       
 
         gameStatusUI.text = gm.UpdateStatus();
     }
@@ -93,6 +71,11 @@ public class JSON_FileScript : MonoBehaviour
         if (col.gameObject.name == "Enemy")
         {
             gm.JgameStatus.health -= 1;
+        }
+
+        if (col.gameObject.name == "Checkpoint1")
+        {
+            gm.JgameStatus.spawnPoint = "Home";
         }
     }
 

@@ -26,7 +26,7 @@ public class CharacterMovement : MonoBehaviour
     public Button pauseButton;
 
     public bool homeReached;
-    int numberCoins = 5;
+    int numberCoins = 10;
 
     public Text gameStatusUI;
     public Text gameOverUI;
@@ -84,12 +84,6 @@ public class CharacterMovement : MonoBehaviour
             // Update UI 
             gameOverUI.text = "You Lose!";
             gm.resetGame();
-
-            //MonoBehaviour has a gameObject property for the current game object
-            Destroy(gameObject);
-
-            // Destroy remaining AIBalls
-         
         }
 
         if (gm.gameStatus.coinsCollected >= numberCoins)
@@ -99,15 +93,6 @@ public class CharacterMovement : MonoBehaviour
             // Reset Gamemanager variuables
             gm.resetGame();
 
-            //MonoBehaviour has a gameObject property for the current game object
-            Destroy(gameObject);
-
-            // Destroy remaining AIBalls
-            GameObject[] remainingAIBalls = GameObject.FindGameObjectsWithTag("NPCBall");
-            foreach (GameObject go in remainingAIBalls)
-            {
-                Destroy(go);
-            }
         }
 
         gameStatusUI.text = gm.UpdateStatus();
@@ -153,6 +138,10 @@ public class CharacterMovement : MonoBehaviour
         if (col.gameObject.name == "Enemy")
         {
             gm.gameStatus.health -= 1;
+        }
+        if (col.gameObject.name == "Checkpoint1")
+        {
+            gm.gameStatus.currentLevel += 1;
         }
     }
 

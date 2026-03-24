@@ -6,7 +6,6 @@ public struct GameStatus_SO
 {
     public string playerName;
     public int currentLevel;
-    public string spawnPoint;
     public int health;
     public int coinsCollected;
     public Vector3 playerPosition;
@@ -50,10 +49,10 @@ public class SO_GameManager : ScriptableObject
         //initilise a new game status
         gameStatus.playerName = "Walter";
         gameStatus.currentLevel = 1;
-        gameStatus.spawnPoint = "Beginning";//reference to a game object
         gameStatus.health = 10;
         gameStatus.coinsCollected = 0;
         gameStatus.playerPosition = new Vector3(0, 0, 0);
+       
        
 
     }
@@ -65,7 +64,6 @@ public class SO_GameManager : ScriptableObject
         string message = "";
         message += "Player Name: " + gameStatus.playerName + "\n";
         message += "Current Level: " + gameStatus.currentLevel + "\n";
-        message += "Spawn Point: " + gameStatus.spawnPoint + "\n";
         message += "Health: " + gameStatus.health + "\n";
         message += "Coins: " + gameStatus.coinsCollected + "\n";
         return message;
