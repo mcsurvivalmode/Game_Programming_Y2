@@ -818,15 +818,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3569883211457275658, guid: c15055f00a2303f49b65f251f4208aba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9879799
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3569883211457275658, guid: c15055f00a2303f49b65f251f4208aba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.96
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3569883211457275658, guid: c15055f00a2303f49b65f251f4208aba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.31805
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3569883211457275658, guid: c15055f00a2303f49b65f251f4208aba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2446,10 +2446,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::JSON_GameManager
   JgameStatus:
     spawnPoint: 
-    health: 0
     Deaths: 0
+    health: 0
     coinsCollected: 0
     playerPosition: {x: 0, y: 0, z: 0}
+    coinPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &629022500
 GameObject:
   m_ObjectHideFlags: 0
@@ -5891,10 +5892,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::JSON_GameManager
   JgameStatus:
     spawnPoint: 
-    health: 0
     Deaths: 0
+    health: 0
     coinsCollected: 0
     playerPosition: {x: 0, y: 0, z: 0}
+    coinPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1441664334
 Transform:
   m_ObjectHideFlags: 0

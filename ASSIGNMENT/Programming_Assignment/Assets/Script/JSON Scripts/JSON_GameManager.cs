@@ -11,11 +11,12 @@ using System.Collections.Generic;
 public struct JSON_GameStatus
 {
     public string spawnPoint;
-    
+
     public int Deaths;
     public int health;
     public int coinsCollected;
     public Vector3 playerPosition;
+    public Vector3 coinPosition;
 }
 
 // Create Game Class by extending MonoBehaviour
@@ -74,6 +75,7 @@ public class JSON_GameManager : MonoBehaviour
         JgameStatus.Deaths = 0;
         JgameStatus.coinsCollected = 0;
         JgameStatus.playerPosition = new Vector3(0, 0, 0);
+        JgameStatus.coinPosition = new Vector3(1, 1, 1);
         GameObject.Find("Player").transform.position = JgameStatus.playerPosition;
         
         Debug.Log("File reset");
