@@ -175,7 +175,7 @@ public class CharacterMovementJSON : MonoBehaviour
         }
 
         //if walking and running is true and false 
-        if ((movementPressed && runPressed) && !isRunning)
+        if (movementPressed && runPressed && !isRunning)
         {
             animator.SetBool(isRunningHash, true);
         }

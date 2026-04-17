@@ -20,7 +20,7 @@ public class JSON_FileScript : MonoBehaviour
     public bool isPaused = false;
     public Button pauseButton;
 
-    [SerializeField]
+    
     public JSON_GameManager gm;
 
 
@@ -48,11 +48,11 @@ public class JSON_FileScript : MonoBehaviour
         //gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
     }
 
-    private void FixedUpdate()
-    {
+    //private void FixedUpdate()
+    //{
 
-        gameStatusUI.text = gm.UpdateStatus();
-    }
+        //gameStatusUI.text = gm.UpdateStatus();
+    //}
 
 
     void OnTriggerEnter(Collider col)
