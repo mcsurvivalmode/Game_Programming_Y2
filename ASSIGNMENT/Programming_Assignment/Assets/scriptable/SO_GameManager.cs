@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public struct GameStatus_SO
 {
     public string playerName;
-    public int currentLevel;
+    public string currentLevel;
    
     public int coinsCollected;
     public Vector3 playerPosition;
@@ -48,7 +48,7 @@ public class SO_GameManager : ScriptableObject
     {
         //initilise a new game status
         gameStatus.playerName = "Walter";
-        gameStatus.currentLevel = 1;
+        gameStatus.currentLevel = "Find the cat";
         gameStatus.coinsCollected = 0;
         gameStatus.playerPosition = new Vector3(0, 0, 0);
        
@@ -61,8 +61,8 @@ public class SO_GameManager : ScriptableObject
     {
         //building the formatted string to be shown to the user
         string message = "";
-        message += "Player Name: " + gameStatus.playerName + "\n";
-        message += "Current Level: " + gameStatus.currentLevel + "\n";
+      
+        message += "Task: " + gameStatus.currentLevel + "\n";
    
         message += "Coins: " + gameStatus.coinsCollected + "\n";
         return message;

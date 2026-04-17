@@ -70,7 +70,7 @@ public class JSON_GameManager : MonoBehaviour
     public void resetGame()
     {
 
-        JgameStatus.spawnPoint = "Beginning";//reference to a game object
+        JgameStatus.spawnPoint = "Find the cat";//reference to a game object
         JgameStatus.health = 10;
         JgameStatus.Deaths = 0;
         JgameStatus.coinsCollected = 0;
@@ -99,7 +99,7 @@ public class JSON_GameManager : MonoBehaviour
     {
         //building the formatted string to be shown to the user
         string message = "";
-        message += "Spawn Point: " + JgameStatus.spawnPoint + "\n";
+        message += "Task: " + JgameStatus.spawnPoint + "\n";
         message += "Health: " + JgameStatus.health + "\n";
         message += "Deaths: " + JgameStatus.Deaths + "\n";
         message += "Your HighScore: " + JgameStatus.coinsCollected + "\n";
