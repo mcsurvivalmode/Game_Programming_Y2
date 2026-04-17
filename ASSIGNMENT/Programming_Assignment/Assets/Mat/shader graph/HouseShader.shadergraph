@@ -147,8 +147,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 107.00006103515625,
-            "y": 0.00002114023664034903
+            "x": -379.0,
+            "y": -362.9999694824219
         },
         "m_Blocks": [
             {
@@ -164,8 +164,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 98.99990844726563,
-            "y": 201.99998474121095
+            "x": -388.0,
+            "y": -175.99998474121095
         },
         "m_Blocks": [
             {
@@ -220,9 +220,9 @@
     "m_ShaderOutputName": "BaseColor",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 0.33018869161605837,
-        "y": 0.2115260511636734,
-        "z": 0.0
+        "x": 0.3686274588108063,
+        "y": 0.2352941334247589,
+        "z": 0.20000001788139344
     },
     "m_DefaultValue": {
         "x": 0.5,
@@ -322,7 +322,7 @@
     "m_ShaderOutputName": "OutMinMax",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 0.5,
+        "x": 0.0,
         "y": 1.0
     },
     "m_DefaultValue": {
@@ -462,10 +462,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -478.9999694824219,
-            "y": 295.0000305175781,
-            "width": 207.99996948242188,
-            "height": 301.9999084472656
+            "x": -943.0001220703125,
+            "y": -231.99998474121095,
+            "width": 208.00006103515626,
+            "height": 301.99981689453127
         }
     },
     "m_Slots": [
@@ -505,10 +505,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -210.9999237060547,
-            "y": 427.0,
-            "width": 207.9999542236328,
-            "height": 302.0
+            "x": -788.0,
+            "y": 197.99996948242188,
+            "width": 208.00006103515626,
+            "height": 302.00006103515627
         }
     },
     "m_Slots": [
@@ -878,10 +878,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -523.9998779296875,
-            "y": 718.9999389648438,
-            "width": 207.99993896484376,
-            "height": 326.00006103515627
+            "x": -1109.0,
+            "y": 577.9999389648438,
+            "width": 207.99969482421876,
+            "height": 326.0001220703125
         }
     },
     "m_Slots": [
@@ -918,7 +918,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Metallic",
     "m_StageCapability": 2,
-    "m_Value": 0.0,
+    "m_Value": 5.0,
     "m_DefaultValue": 0.0,
     "m_Labels": [],
     "m_LiteralMode": false
@@ -936,10 +936,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -897.9999389648438,
-            "y": -4.999992370605469,
+            "x": -1442.0,
+            "y": -549.0000610351563,
             "width": 208.0,
-            "height": 325.9999694824219
+            "height": 326.00006103515627
         }
     },
     "m_Slots": [
@@ -1413,9 +1413,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -746.9999389648438,
-            "y": 818.9999389648438,
-            "width": 124.00006103515625,
+            "x": -1372.0001220703125,
+            "y": 562.0,
+            "width": 124.0,
             "height": 173.00006103515626
         }
     },
@@ -1457,8 +1457,8 @@
     "m_ShaderOutputName": "InMinMax",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": -1.0,
-        "y": 0.5
+        "x": 0.0,
+        "y": 1.0
     },
     "m_DefaultValue": {
         "x": -1.0,
@@ -1477,7 +1477,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Power",
     "m_StageCapability": 3,
-    "m_Value": 2.0,
+    "m_Value": 0.0,
     "m_DefaultValue": 1.0,
     "m_Labels": [],
     "m_LiteralMode": false
@@ -1555,10 +1555,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -859.9999389648438,
-            "y": 473.9999694824219,
-            "width": 208.00006103515626,
-            "height": 124.99996948242188
+            "x": -1336.9998779296875,
+            "y": -7.999996662139893,
+            "width": 208.0,
+            "height": 124.99996185302735
         }
     },
     "m_Slots": [
@@ -1579,8 +1579,8 @@
     "m_Color": {
         "color": {
             "r": 1.0,
-            "g": 0.701485812664032,
-            "b": 0.0,
+            "g": 0.0,
+            "b": 0.7844252586364746,
             "a": 0.0
         },
         "mode": 0
