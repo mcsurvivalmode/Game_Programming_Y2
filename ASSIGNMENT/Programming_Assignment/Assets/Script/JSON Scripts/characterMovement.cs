@@ -114,7 +114,7 @@ public class CharacterMovement : NetworkBehaviour // change back to monobehaviou
 
         }
 
-        gameStatusUI.text = gm.UpdateStatus();
+        //gameStatusUI.text = gm.UpdateStatus();
     }
 
 
