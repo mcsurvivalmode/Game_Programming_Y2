@@ -5,18 +5,22 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 using System.Diagnostics;
+using Unity.Netcode;
+using UnityEngine.Rendering.UI;
+using Unity.Cinemachine;
 
 
 
 
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : NetworkBehaviour // change back to monobehaviour 
 {
     Animator animator;
     int isWalkingHash;
     int isRunningHash;
     public Text[] canvasUpdate;
     PlayerInput input;
+    private Camera _camera; // for netcode 
 
     Vector2 currentMovement;
     bool movementPressed;
@@ -45,9 +49,7 @@ public class CharacterMovement : MonoBehaviour
         
     }
 
-
-
-    void Start()
+    public override void OnNetworkSpawn() //this is for the netcode stuff, if it doesnt work delete this 
     {
         gm.Start();
 
@@ -59,15 +61,41 @@ public class CharacterMovement : MonoBehaviour
 
 
         UpdateSceneFromManager();
+        _camera = GetComponent<Camera>();//for netcode 
 
+        if (!IsOwner)
+        {
+           _camera.enabled = false;
+        }
 
     }
+
+    //void Start()
+    //{
+      //  gm.Start();
+
+        //animator = GetComponent<Animator>();
+
+        //isWalkingHash = Animator.StringToHash("isWalking");
+        //isRunningHash = Animator.StringToHash("isRunning");
+        //homeReached = false;
+
+
+        //UpdateSceneFromManager();
+
+
+    //}
 
    
     void Update()
     {
         HandleMovement();
         HandleRotation();
+
+        if (!IsOwner)
+        {
+            return;
+        }
     }
 
     private void FixedUpdate()
