@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3162509338112363687
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 426026274394455015, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 11400000, guid: f9210165c0b2b1048917477d38043527, type: 2}
+    - target: {fileID: 426026274394455015, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: pauseButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 426026274394455015, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: canvasUpdate.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963797949774002312, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451540674789188146, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      propertyPath: m_Name
+      value: Player Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6451540674789188146, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3069923882232069502}
+    - targetCorrespondingSourceObject: {fileID: 6451540674789188146, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2938202648623315373}
+  m_SourcePrefab: {fileID: 100100000, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+--- !u!1 &8244691733867146901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6451540674789188146, guid: 8c515c9f8e5ec484eadd887367db6a7e, type: 3}
+  m_PrefabInstance: {fileID: 3162509338112363687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3069923882232069502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244691733867146901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63211945d66e58840a23ea56e9c1f88f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
+  ShowTopMostFoldoutHeaderGroup: 1
+  canvasUpdate: []
+  homeReached: 0
+  gameStatusUI: {fileID: 0}
+  gameOverUI: {fileID: 0}
+  gm: {fileID: 11400000, guid: f9210165c0b2b1048917477d38043527, type: 2}
+--- !u!114 &2938202648623315373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244691733867146901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e71a759f61feb40ab25b4c0d76acc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JSON_FileScript
+  gameStatusUI: {fileID: 0}
+  gameOverUI: {fileID: 0}
+  isPaused: 0
+  pauseButton: {fileID: 0}
+  gm: {fileID: 0}
