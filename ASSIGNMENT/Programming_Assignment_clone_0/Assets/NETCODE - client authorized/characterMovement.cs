@@ -8,6 +8,7 @@ using System.Diagnostics;
 using Unity.Netcode;
 using UnityEngine.Rendering.UI;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 
 
 
@@ -35,6 +36,9 @@ public class CharacterMovement : NetworkBehaviour // change back to monobehaviou
 
     public SO_GameManager gm;
 
+    [SerializeField]private CinemachineCamera cc;
+    [SerializeField]private AudioListener listener;
+
 
     void Awake()
     {
@@ -54,7 +58,9 @@ public class CharacterMovement : NetworkBehaviour // change back to monobehaviou
         if (!IsOwner)
         {
             enabled = false;
+            cc.enabled = false; 
             return;
+             
         }
         gm.Start();
 
@@ -68,10 +74,7 @@ public class CharacterMovement : NetworkBehaviour // change back to monobehaviou
         UpdateSceneFromManager();
         _camera = GetComponent<Camera>();//for netcode 
 
-        if (!IsOwner)
-        {
-           _camera.enabled = false;
-        }
+       
 
     }
 
