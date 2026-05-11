@@ -36,6 +36,7 @@ public class JSON_GameManager : MonoBehaviour
         //retrieving saving location
         filePath = Application.persistentDataPath;
         JgameStatus = new JSON_GameStatus();
+        JgameStatus.playerPosition = new Vector3(16, 0, -45);
         Debug.Log(filePath);
         //startup initialisation
         LoadGameStatus();
@@ -74,7 +75,7 @@ public class JSON_GameManager : MonoBehaviour
         JgameStatus.health = 10;
         JgameStatus.Deaths = 0;
         JgameStatus.coinsCollected = 0;
-        JgameStatus.playerPosition = new Vector3(0, 0, 0);
+        JgameStatus.playerPosition = new Vector3(16, 0, -45);
         JgameStatus.coinPosition = new Vector3(1, 1, 1);
         GameObject.Find("Player").transform.position = JgameStatus.playerPosition;
         

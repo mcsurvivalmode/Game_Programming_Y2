@@ -95,7 +95,7 @@ public class CharacterMovement1 : MonoBehaviour // change back to monobehaviour
 
         }
 
-        //gameStatusUI.text = gm.UpdateStatus();
+        gameStatusUI.text = gm.UpdateStatus();
     }
 
 
