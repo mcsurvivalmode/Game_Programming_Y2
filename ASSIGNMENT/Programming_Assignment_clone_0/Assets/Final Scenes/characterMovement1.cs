@@ -1,14 +1,16 @@
-using UnityEngine;
-using UnityEngine.UI;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using Unity.Cinemachine;
+using Unity.Netcode;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-using System.Diagnostics;
-using Unity.Netcode;
 using UnityEngine.Rendering.UI;
-using Unity.Cinemachine;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 
 
@@ -117,12 +119,16 @@ public class CharacterMovement1 : MonoBehaviour // change back to monobehaviour
     {
         if (col.gameObject.name == "home")
         {
-            col.gameObject.GetComponent<Renderer>().material.color = Color.green;
-            canvasUpdate[0].text = "Home!";
-            homeReached = true; 
+            SceneManager.LoadScene("WinnerScreen");
 
         }
-     
+
+        if (col.gameObject.name == "Father")
+        {
+            SceneManager.LoadScene("LoserScreen");
+
+        }
+
     }
 
     void OnTriggerEnter(Collider col)

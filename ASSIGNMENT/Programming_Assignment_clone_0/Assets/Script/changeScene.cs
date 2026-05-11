@@ -7,11 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class changeScreen : MonoBehaviour
 {
-    public void ChangeScene(string sceneName)
+    public void ChangeScene()
     {
-        SceneManager.LoadScene (name);
+        SceneManager.LoadScene ("GAME");
 
     }
+    public void ChangeSceneMulti()
+    {
+        SceneManager.LoadScene("Multiplayer");
+
+    }
+
 
 
 

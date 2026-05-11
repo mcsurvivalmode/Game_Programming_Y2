@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Final Scenes/SPLASHSCREEN.unity
+    path: Assets/Final Scenes/Splashscreen.unity
     guid: 6629e855654191a45b0577b6b1002112
   - enabled: 1
-    path: Assets/NETCODE - client authorized/NETCODE TESTING.unity
+    path: Assets/Final Scenes/Multiplayer.unity
     guid: 7bb0d3e003dd47944ad1c34548454602
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Final Scenes/LoserScreen.unity
+    guid: c1ab9f88c1cf6f74fa38c1e893bde2ad
+  - enabled: 1
+    path: Assets/Final Scenes/WinnerScreen.unity
+    guid: aeebe166840b5c94f8c501bc69603400
+  - enabled: 1
     path: Assets/Final Scenes/GAME.unity
     guid: d9d0c78b01dd01840afbaa9c0a6abdf2
   - enabled: 0
