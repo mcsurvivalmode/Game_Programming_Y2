@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     Vector3 destination;
 
     //canvas update on state!
-    public Text[] CanvasUpdate;
+   
 
     public bool isVisible;
     public bool isAudible;
@@ -123,7 +123,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (col.gameObject.name == "player")
         {
-            CanvasUpdate[6].text = "Player: Caught";
+            //CanvasUpdate[6].text = "Player: Caught";
 
         }
     }
@@ -131,7 +131,7 @@ public class EnemyMovement : MonoBehaviour
     void SeekFunction()
     {
         destination = targetObject.position;
-        CanvasUpdate[3].text = "Enemy: Seeking";
+        
     }
     void PatrolFunction()
     {
@@ -139,12 +139,12 @@ public class EnemyMovement : MonoBehaviour
         {
             destination = NextWaypoint(destination);
         }
-        CanvasUpdate[2].text = "Enemy: Patrolling";
+        
     }
     void IdleFunction()
     {
         destination = NextWaypoint(destination);
-        CanvasUpdate[1].text = "Enemy: Idling";
+       
     }
     
     //void PatrolSafeFunction()
@@ -193,7 +193,7 @@ public class EnemyMovement : MonoBehaviour
             Debug.Log("Player is VISIBLE");
             isVisible = true;
             // Update Close Text on Canvas
-            CanvasUpdate[0].enabled = true;
+            
 
         }
         else
@@ -202,7 +202,7 @@ public class EnemyMovement : MonoBehaviour
             isVisible = false;
             Debug.Log("Player is NOT VISIBLE");
             // Update Close Text on Canvas
-            CanvasUpdate[0].enabled = false;
+            
         }
     }
 
@@ -217,14 +217,14 @@ public class EnemyMovement : MonoBehaviour
             // Is Audible
             isAudible = true;
             // Update Close Text on Canvas
-            CanvasUpdate[1].enabled = true;
+            
         }
         else
         {
             // Is not Audible
             isAudible = false;
             // Update Close Text on Canvas
-            CanvasUpdate[1].enabled = false;
+            
         }
     }
 
@@ -259,16 +259,14 @@ public class EnemyMovement : MonoBehaviour
 
             // Set Close Bool true
             isClose = true;
-            // Update Close Text on Canvas
-            CanvasUpdate[2].enabled = true;
+          
         }
         else
         {
 
             // Set Close Bool false
             isClose = false;
-            // Update Close Text on Canvas
-            CanvasUpdate[2].enabled = false;
+           
         }
     }
 
