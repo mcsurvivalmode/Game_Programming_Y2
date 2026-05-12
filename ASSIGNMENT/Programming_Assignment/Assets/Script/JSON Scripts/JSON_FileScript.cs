@@ -23,28 +23,11 @@ public class JSON_FileScript : MonoBehaviour
     
     public JSON_GameManager gm;
 
-
-    void Awake()
-    {
-        
-    }
-
-
-
     void Start()
     {
         gm = gameObject.GetComponentInChildren<JSON_GameManager>();
-        //gm.Start();
-
-
-        
-
 
     }
-
-   
- 
-
 
     void OnTriggerEnter(Collider col)
     {
@@ -68,45 +51,6 @@ public class JSON_FileScript : MonoBehaviour
     }
 
  
-
-   // public void OnApplicationPause(bool pauseStatus)
-    //{
-
-        //if (gm != null)
-        //{
-            // if Game is paused, savegame
-           // if (pauseStatus)
-           // {
-                // Save Game data
-              //  gm.SaveGameStatus ();
-           // }
-            //else
-            //{
-                // Load Game data
-              //  gm.LoadGameStatus();
-           // }
-        //}
-
-        //Debug.Log("OnApplicationPause Called");
-    //}
-
-
-
-    // Save data from the scene to the manager
-   // void SaveFromSceneToManager()
-    //{
-
-        // Empty the GameManager NPCBalls Array so that there is always
-        // the correct number of balls after some have been destroyed
-       
-
-        // Update Player Position in the GameManager with the position of the Player in the scene
-        // This will be stored on the JSON file when the application quits 
-        //gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
-
-    //}
-
-
     public void PauseGame()
     {
         if (!isPaused) {

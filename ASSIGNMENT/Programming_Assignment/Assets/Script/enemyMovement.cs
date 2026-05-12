@@ -54,13 +54,11 @@ public class EnemyMovement : MonoBehaviour
     }
 
     
-    void Update() //decision tree 
-    {
-
-             //this will be a state for if the player reaches home, the enemy cannot look for them anymore
+    void Update() 
+    {  
         if (stateCheck == true) 
         {
-            //PatrolSafeFunction();
+          
             isHome = true;
         }
         else
@@ -73,10 +71,6 @@ public class EnemyMovement : MonoBehaviour
             IsPlayerVisible();
             IsPlayerAudible();
             IsPlayerClose();
-            
-
-
-
 
             if (isVisible && isClose)
             {
@@ -119,14 +113,7 @@ public class EnemyMovement : MonoBehaviour
         transform.position = navAgent.nextPosition;
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.name == "player")
-        {
-            //CanvasUpdate[6].text = "Player: Caught";
-
-        }
-    }
+   
    
     void SeekFunction()
     {
@@ -147,14 +134,7 @@ public class EnemyMovement : MonoBehaviour
        
     }
     
-    //void PatrolSafeFunction()
-    //{
-        //if (Vector3.Distance(transform.position, destination) < 2.5)
-        //{
-            //destination = NextWaypoint(destination);
-        //}
-        //CanvasUpdate[4].text = "Enemy: Patroling(player safe)";
-    //}
+
     public Vector3 NextWaypoint(Vector3 currentPosition) //patroling shiz
     {
       
@@ -189,20 +169,12 @@ public class EnemyMovement : MonoBehaviour
     
         if (!navAgent.Raycast(targetObject.transform.position, out hit) && angle < fieldOfViewAngle * 0.5f)
         {
-            // ... the player is Visible
-          
-            isVisible = true;
-            // Update Close Text on Canvas
-            
 
+            isVisible = true;
         }
         else
         {
-            // ... the player is Not Visible
             isVisible = false;
-           
-            // Update Close Text on Canvas
-            
         }
     }
 
