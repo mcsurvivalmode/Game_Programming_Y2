@@ -34,25 +34,16 @@ public class JSON_FileScript : MonoBehaviour
     void Start()
     {
         gm = gameObject.GetComponentInChildren<JSON_GameManager>();
-        gm.Start();
+        //gm.Start();
 
 
-        UpdateSceneFromManager();
+        
 
 
     }
 
    
-    void Update()
-    {
-        //gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
-    }
-
-    //private void FixedUpdate()
-    //{
-
-        //gameStatusUI.text = gm.UpdateStatus();
-    //}
+ 
 
 
     void OnTriggerEnter(Collider col)
@@ -78,39 +69,32 @@ public class JSON_FileScript : MonoBehaviour
 
  
 
-    public void OnApplicationPause(bool pauseStatus)
-    {
+   // public void OnApplicationPause(bool pauseStatus)
+    //{
 
-        if (gm != null)
-        {
+        //if (gm != null)
+        //{
             // if Game is paused, savegame
-            if (pauseStatus)
-            {
+           // if (pauseStatus)
+           // {
                 // Save Game data
-                //gm.SaveGameStatus ();
-            }
-            else
-            {
+              //  gm.SaveGameStatus ();
+           // }
+            //else
+            //{
                 // Load Game data
-                gm.LoadGameStatus();
-            }
-        }
+              //  gm.LoadGameStatus();
+           // }
+        //}
 
         //Debug.Log("OnApplicationPause Called");
-    }
+    //}
 
-    void OnApplicationQuit()
-    {
 
-        // Save Scene Data to the GameManager 
-        SaveFromSceneToManager();
-
-        //Debug.Log("OnApplicationQuit Called");
-    }
 
     // Save data from the scene to the manager
-    void SaveFromSceneToManager()
-    {
+   // void SaveFromSceneToManager()
+    //{
 
         // Empty the GameManager NPCBalls Array so that there is always
         // the correct number of balls after some have been destroyed
@@ -120,7 +104,7 @@ public class JSON_FileScript : MonoBehaviour
         // This will be stored on the JSON file when the application quits 
         //gm.JgameStatus.playerPosition = GameObject.Find("Player").transform.position;
 
-    }
+    //}
 
 
     public void PauseGame()
@@ -143,9 +127,6 @@ public class JSON_FileScript : MonoBehaviour
     }
 
 
-    void UpdateSceneFromManager()
-    {
-        //GameObject.Find("Player").transform.position = gm.JgameStatus.playerPosition;
-    }
+ 
 
 }

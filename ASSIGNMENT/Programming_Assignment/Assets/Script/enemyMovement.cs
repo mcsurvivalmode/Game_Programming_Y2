@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.TextCore.Text;
-using UnityEditor.Experimental.GraphView;
+
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -110,7 +110,7 @@ public class EnemyMovement : MonoBehaviour
         anim.SetBool("move", shouldMove);
         anim.SetFloat("velx", velocity.x);
         anim.SetFloat("vely", velocity.y);
-        Debug.Log("ShouldMove: " + shouldMove);
+      
     }
 
 
@@ -157,7 +157,7 @@ public class EnemyMovement : MonoBehaviour
     //}
     public Vector3 NextWaypoint(Vector3 currentPosition) //patroling shiz
     {
-        Debug.Log(currentPosition);
+      
         if (currentPosition != Vector3.zero)
         {
             for (int i = 0; i < waypoints.Length; i++)
@@ -190,7 +190,7 @@ public class EnemyMovement : MonoBehaviour
         if (!navAgent.Raycast(targetObject.transform.position, out hit) && angle < fieldOfViewAngle * 0.5f)
         {
             // ... the player is Visible
-            Debug.Log("Player is VISIBLE");
+          
             isVisible = true;
             // Update Close Text on Canvas
             
@@ -200,7 +200,7 @@ public class EnemyMovement : MonoBehaviour
         {
             // ... the player is Not Visible
             isVisible = false;
-            Debug.Log("Player is NOT VISIBLE");
+           
             // Update Close Text on Canvas
             
         }
@@ -255,7 +255,7 @@ public class EnemyMovement : MonoBehaviour
         if (pathLength < 20.0f)
         {
 
-            Debug.Log("Path Length: " + pathLength);
+            
 
             // Set Close Bool true
             isClose = true;

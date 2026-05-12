@@ -117,11 +117,7 @@ public class CharacterMovement1 : MonoBehaviour // change back to monobehaviour
     
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "home")
-        {
-            SceneManager.LoadScene("WinnerScreen");
 
-        }
 
         if (col.gameObject.name == "Father")
         {
@@ -140,8 +136,12 @@ public class CharacterMovement1 : MonoBehaviour // change back to monobehaviour
             gm.gameStatus.coinsCollected += 1;
         }
 
+        if (col.gameObject.name == "home")
+        {
+            SceneManager.LoadScene("WinnerScreen");
 
- 
+        }
+
     }
 
  
